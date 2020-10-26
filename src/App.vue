@@ -30,7 +30,7 @@
                   :key="'oitem' + index"
                   @click="choseEmoji(0, oitem.title)"
                 >
-                  <img :src="'/images/face/' + oitem.url" alt="" />
+                  <img :src="publicPath+'/images/face/' + oitem.url" alt="" />
                 </li>
               </ul>
             </div>
@@ -78,7 +78,7 @@
         <div class="reply-content reply-fa">
           <div class="reply-font" @click="doReply(item.id)">
             <div>
-              <img src="/images/icons/reply.png" class="icon-reply" /><font
+              <img :src="publicPath+'/images/icons/reply.png'" class="icon-reply" /><font
                 class="icon-reply icon-hf"
                 >回复</font
               >
@@ -117,7 +117,7 @@
                       :key="'oitem' + index"
                       @click="choseEmoji(item.id, oitem.title)"
                     >
-                      <img :src="'/images/face/' + oitem.url" alt="" />
+                      <img :src="publicPath+'/images/face/' + oitem.url" alt="" />
                     </li>
                   </ul>
                 </div>
@@ -184,7 +184,7 @@
           <div class="reply-content reply-fa">
             <div class="reply-font" @click="doReply(ritem.id)">
               <div>
-                <img src="/images/icons/reply.png" class="icon-reply" /><font
+                <img :src="publicPath+'/images/icons/reply.png'" class="icon-reply" /><font
                   class="icon-reply icon-hf"
                   >回复</font
                 >
@@ -223,7 +223,7 @@
                         :key="'oitem' + index"
                         @click="choseEmoji(ritem.id, oitem.title)"
                       >
-                        <img :src="'/images/face/' + oitem.url" alt="" />
+                        <img :src="publicPath+'/images/face/' + oitem.url" alt="" />
                       </li>
                     </ul>
                   </div>
@@ -327,6 +327,7 @@ export default {
   },
   data() {
     return {
+      publicPath: process.env.BASE_URL,
       replyMap: [],
       buttonMap: [],
       pBodyMap: [],
@@ -455,7 +456,7 @@ export default {
               break;
             }
           }
-          var s ="/images/face/" + src;
+          var s =publicPath + "/images/face/" + src;
           var imoj = "<img src='" + s + "'/>";
 
           str = str.replace(pattern2, imoj);
